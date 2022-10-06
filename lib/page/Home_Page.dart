@@ -1,7 +1,11 @@
+import 'package:apppelicula/models/model_peliculas.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:apppelicula/widgets/Card_Swiper.dart';
+import 'package:apppelicula/providers/peliculas_providers.dart';
 
 class HomePage extends StatelessWidget{
+  final peliculasproviders = PeliculasProviders();
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -13,12 +17,28 @@ class HomePage extends StatelessWidget{
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
-            _SwipperWidet(context)
+            _SwipperWidet()
           ],
         ),
       ),
     ) ;
   }
+
+  Widget _SwipperTarjeta(){
+    return FutureBuilder(
+      future: peliculasproviders.getmovies(),
+      builder:(BuildContext context, AsyncSnapshot<List> snapshot){
+        if(snapshot.hashData){
+          return CardSwiper( peliculas: snapshot.data as List<ModeloPeliculas>);
+        }else{
+          return CircularProgressIndicatior();
+        }
+
+      }
+    );
+  }
+
+
   Widget _SwipperWidet(BuildContext context){
     final _screensize = MediaQuery.of(context).size;
 
