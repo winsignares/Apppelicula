@@ -1,8 +1,8 @@
-import 'package:apppelicula/models/model_peliculas.dart';
+import 'package:Apppelicula/models/model_peliculas.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
-import 'package:apppelicula/widgets/Card_Swiper.dart';
-import 'package:apppelicula/providers/peliculas_providers.dart';
+import 'package:Apppelicula/widgets/Card_Swiper.dart';
+import 'package:Apppelicula/providers/peliculas_providers.dart';
 
 class HomePage extends StatelessWidget{
   final peliculasproviders = PeliculasProviders();
@@ -17,7 +17,7 @@ class HomePage extends StatelessWidget{
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
-            _SwipperWidet()
+            _SwipperTarjeta()
           ],
         ),
       ),
@@ -28,10 +28,10 @@ class HomePage extends StatelessWidget{
     return FutureBuilder(
       future: peliculasproviders.getmovies(),
       builder:(BuildContext context, AsyncSnapshot<List> snapshot){
-        if(snapshot.hashData){
+        if(snapshot.hasData){
           return CardSwiper( peliculas: snapshot.data as List<ModeloPeliculas>);
         }else{
-          return CircularProgressIndicatior();
+          return CircularProgressIndicator();
         }
 
       }

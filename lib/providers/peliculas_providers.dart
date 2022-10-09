@@ -1,6 +1,8 @@
 import 'package:http/http.dart' as http;
+import 'dart:convert';
+import 'dart:async';
 //llamamos o importamo el modelo
-import 'package:apppelicula/models/model_peliculas.dart';
+import 'package:Apppelicula/models/model_peliculas.dart';
 
 class PeliculasProviders{
     String _apikey = "76e77ec00c5cf623948433d17bc2264b";
