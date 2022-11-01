@@ -18,7 +18,7 @@ class CardSwiper extends StatelessWidget{
         itemCount: peliculas.length,
         layout: SwiperLayout.STACK,
         itemWidth: _screensize.width * 0.7,
-        itemHeight: _screensize.height * 0.9,
+        itemHeight: _screensize.height * 0.6,
         itemBuilder: (context, index) {
           return ClipRRect(
             borderRadius: BorderRadius.circular(20.0),

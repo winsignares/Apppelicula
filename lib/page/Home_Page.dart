@@ -5,7 +5,7 @@ import 'package:Apppelicula/widgets/Card_Swiper.dart';
 import 'package:Apppelicula/providers/peliculas_providers.dart';
 import 'package:Apppelicula/widgets/Fotter_Widget.dart';
 
-class HomePage extends StatelessWidget{
+class HomePage extends StatelessWidget {
   final peliculasproviders = PeliculasProviders();
   @override
   Widget build(BuildContext context) {
@@ -23,30 +23,28 @@ class HomePage extends StatelessWidget{
           ],
         ),
       ),
-    ) ;
-  }
-
-  Widget _SwipperTarjeta(){
-    return FutureBuilder(
-      future: peliculasproviders.getmovies(),
-      builder:(BuildContext context, AsyncSnapshot<List> snapshot){
-        if(snapshot.hasData){
-          return CardSwiper( peliculas: snapshot.data as List<ModeloPeliculas>);
-        }else{
-          return CircularProgressIndicator();
-        }
-
-      }
     );
   }
 
+  Widget _SwipperTarjeta() {
+    return FutureBuilder(
+        future: peliculasproviders.getmovies(),
+        builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
+          if (snapshot.hasData) {
+            return CardSwiper(
+                peliculas: snapshot.data as List<ModeloPeliculas>);
+          } else {
+            return CircularProgressIndicator();
+          }
+        });
+  }
 
-  Widget _SwipperWidet(BuildContext context){
+  Widget _SwipperWidet(BuildContext context) {
     final _screensize = MediaQuery.of(context).size;
 
     return Container(
       padding: EdgeInsets.only(top: 8.0),
-      child:  new Swiper(
+      child: new Swiper(
         itemCount: 5,
         layout: SwiperLayout.STACK,
         itemWidth: _screensize.width * 0.7,
@@ -56,14 +54,13 @@ class HomePage extends StatelessWidget{
             borderRadius: BorderRadius.circular(20.0),
             child: FadeInImage(
               placeholder: AssetImage('assets/no-image.jpg'),
-              image: NetworkImage('https://educacion30.b-cdn.net/wp-content/uploads/2016/04/animales-destacada.jpg'),
+              image: NetworkImage(
+                  'https://educacion30.b-cdn.net/wp-content/uploads/2016/04/animales-destacada.jpg'),
               fit: BoxFit.cover,
             ),
           );
         },
-
       ),
     );
-
   }
 }

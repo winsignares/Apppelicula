@@ -37,7 +37,7 @@ class MovieHorizontal extends StatelessWidget {
                   image: NetworkImage(pelicula.getposterImg()),
                   placeholder: AssetImage('assets/no-image.jpg'),
                   fit: BoxFit.cover,
-                  height: 140.0,
+                  height: 120.0,
                 ),
               ),
               SizedBox(

@@ -12,11 +12,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-     debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: false,
       initialRoute: '/',
-      routes: {
-        '/':(context) => HomePage()
-      },
+      routes: {'/': (context) => HomePage()},
     );
   }
 }
