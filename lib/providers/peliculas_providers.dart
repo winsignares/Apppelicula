@@ -9,6 +9,9 @@ class PeliculasProviders{
     String _url = "api.themoviedb.org";
     String _language = "en-US";
 
+    int _popularesPage = 0;
+    bool _cargando = false;
+
     /**
     * debemos colocar el future como lista de modelo pelicula
      */
@@ -26,6 +29,20 @@ class PeliculasProviders{
 
         return peliculas.items;
     }
+
+     Future<List<ModeloPeliculas>> getPopular() async{
+        if (_cargando) return [];
+        _cargando = true;
+        _popularesPage++;
+        final url = Uri.https(_url, '3/movie/popular',
+            {'api_key':_apikey,'language':_language,  'page': _popularesPage.toString()}
+        );
+        final resp = await http.get(url);
+        final decodeData = json.decode(resp.body);
+        final peliculas = new Peliculas.fromJsonList(decodeData['results']);
+        return peliculas.items;
+    }
+
 
 }
 

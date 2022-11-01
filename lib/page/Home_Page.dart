@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:Apppelicula/widgets/Card_Swiper.dart';
 import 'package:Apppelicula/providers/peliculas_providers.dart';
+import 'package:Apppelicula/widgets/Fotter_Widget.dart';
 
 class HomePage extends StatelessWidget{
   final peliculasproviders = PeliculasProviders();
@@ -17,7 +18,8 @@ class HomePage extends StatelessWidget{
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
-            _SwipperTarjeta()
+            _SwipperTarjeta(),
+            footer(context, peliculasproviders)
           ],
         ),
       ),
